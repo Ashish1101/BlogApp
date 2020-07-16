@@ -1,0 +1,4 @@
+{
+    "jwtSecret":"Thisismyfuckingwebsite",
+    "mongoURI":"mongodb+srv://test:test@lpudevapp-uj2xp.mongodb.net/<ReactAuth>?retryWrites=true&w=majority"
+}
