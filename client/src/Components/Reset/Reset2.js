@@ -1,55 +1,61 @@
 import React , {useState , useContext, useEffect} from 'react'
 import AlertContext from '../../Context/alert/alertContext'
-import AuthContext from '../../Context/auth/authContext'
-import {useParams} from 'react-router-dom'
 
-const Forgot = (props) => {
+import {useParams, useHistory} from 'react-router-dom'
+import axios from 'axios'
 
-  const alertContext = useContext(AlertContext);
-  const authContext = useContext(AuthContext);
 
+const Reset2 = (props) => {
+
+  const alertContext = useContext(AlertContext)
   const token = useParams()
-  
-  
+  const history = useHistory()
   const { setAlert } = alertContext;
-  const { resetPassword , isForgot , error , resetInfo } = authContext
-
- 
-
-  useEffect(() => {
-  if(error === "No User with this email"){
-      setAlert(error , 'danger')
-  }
-  if(resetInfo) {
-    props.history.push('/login')
-  }
-  //eslint-disable-next-line
-  }, [])
 
   const [event , setEvent] = useState({
     password : '',
-    password1:''
+    password1:'',
+    isReset: false,
   })
+ 
+useEffect(() => {
+    if(event.isReset) {
+        setAlert('Password Reset Successfully', 'success');
+        history.push('/login')
+    }
+})
+
+ 
 
 const onChange = (e) => {
     setEvent({...event , [e.target.name]: e.target.value})
 }
 
-const Data = {
-    password: event.password
-}
+
 
 const { password , password1 } = event
+const Data = {
+    password: event.password
+} 
+ 
 
 const onSubmit = (e) => {
     e.preventDefault();
     if(password !== password1) {
-        setAlert('Password don not match', 'success')
+        setAlert('Password do not match', 'warning')
     }
-    
-    resetPassword(Data , token)
+    const config = {
+        headers  : {
+            'Content-Type':'application/json'
+        }
+    }
+    axios.post(`/reset/${token}` , Data , config).then(res => {
+        setEvent({isReset : true , password : "" , password1: ""});
+    }).catch(err => console.log(err))
     console.log('submitted')
 }
+
+
 
 
 
@@ -82,4 +88,4 @@ const onSubmit = (e) => {
   )
 }
 
-export default Forgot
+export default Reset2

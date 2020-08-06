@@ -1,30 +1,31 @@
 import React , {useState , useContext, useEffect} from 'react'
 import AlertContext from '../../Context/alert/alertContext'
-import AuthContext from '../../Context/auth/authContext'
+import axios from 'axios';
+import {useHistory} from 'react-router-dom'
+//import AuthContext from '../../Context/auth/authContext'
 
 
 const Forgot = (props) => {
 
   const alertContext = useContext(AlertContext);
-  const authContext = useContext(AuthContext);
-
-
+ // const authContext = useContext(AuthContext);
+  let history = useHistory()
+   
   const { setAlert } = alertContext;
-  const { forgot , isForgot , error } = authContext
+  //const { forgot , isForgot , error } = authContext
+  const [event , setEvent] = useState({
+    email : "",
+    isForgot: false
+  })
 
   useEffect(() => {
-  if(error === "No User with this email"){
-      setAlert(error , 'danger')
-  }
-  if(isForgot) {
-    props.history.push('/login')
+  if(event.isForgot) {
+    history.push('/login')
   }
   //eslint-disable-next-line
   }, [])
 
-  const [event , setEvent] = useState({
-    email : "",
-  })
+  
 
 const onChange = (e) => {
     setEvent({...event , [e.target.name]: e.target.value})
@@ -34,6 +35,7 @@ const Data = {
     email: event.email
 }
 
+
 const {email } = event
 
 const onSubmit = (e) => {
@@ -41,7 +43,16 @@ const onSubmit = (e) => {
     if(email ==='') {
         setAlert('Email is Required', 'success')
     }
-    forgot(Data)
+    const config = {
+      headers : {
+        'Content-Type':'application/json'
+      }
+    }
+   //forgot(Data)
+    axios.post('/forgot/', Data , config).then((res) => {
+      setEvent({isForgot : true , email :''})
+    }).catch(err => setAlert(err , 'danger'))
+    setAlert('Reset Link has been sent to your registered Email' , 'success')
     console.log('submitted')
 }
 

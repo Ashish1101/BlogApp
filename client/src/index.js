@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'popper.js'
+import 'bootstrap/dist/js/bootstrap'
+import 'react-toastify/dist/ReactToastify.css'
 
 ReactDOM.render(
   <React.StrictMode>

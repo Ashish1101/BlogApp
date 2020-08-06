@@ -1,8 +1,23 @@
-POST http://localhost:5000/register
-Content-Type: application/json
+# POST http://localhost:5000/forgot/ HTTP/1.1
+# content-type: application/json
 
-{
-    "name":"Ashish",
-    "email":"ashish@gmail.com",
-    "password":"123456"
-}
+# {
+#     "email":"coderguy98@gmail.com"
+# }
+
+
+#Reset Password
+# POST http://localhost:5000/reset/a3c5d4c6b8dfad5b8620c935ac60c604e1e928b5 HTTP/1.1
+# content-type: application/json
+
+# {
+#     "password":"test12"
+# }
+
+# #send file
+# POST http://localhost:5000/blog/
+# Content-Type: app
+
+
+
+GET http://localhost:5000/blog/5f100ac9aeba2a1560d05d65

@@ -10,7 +10,6 @@ router.post('/:token', function(req, res) {
       function(done) {
         User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
           if (!user) {
-           
             return res.status(404).json({msg:"Password reset Token Expired"});
           }
   

@@ -2,3 +2,4 @@ node_modules
 client/node_modules
 client/build
 client/.env.local
+client/public/upload

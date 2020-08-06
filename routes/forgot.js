@@ -4,9 +4,6 @@ const nodemailer = require('nodemailer')
 const User = require('../models/User')
 const crypto = require('crypto')
 const async= require('async')
-router.get('/', (req, res) => {
-   res.send('in reset password')
-})
 
 
 
@@ -45,10 +42,9 @@ router.post('/', function(req, res, next) {
           to: user.email,
           from: "ashishskkumar321@gmail.com",
           subject: 'Node.js Password Reset',
-          text: `You are receiving this because you (or someone else) have requested the reset of the password for your account.\n
-            Please click on the following link, or paste this into your browser to complete the process:\n
-            http://localhost:3000/reset/${token} \n
-            If you did not request this, please ignore this email and your password will remain unchanged.\n`
+          html: `<h2>Click the Link Below to Reset Your Password </h2> \n
+          <p>Note : Ignore if this is not send by you </p>
+          <a href="http://localhost:3000/reset/${token}">Click</a>`
         };
         smtpTransport.sendMail(mailOptions, function(err) {
           done(err, 'done');

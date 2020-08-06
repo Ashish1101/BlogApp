@@ -12,7 +12,11 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  LOGOUT
+  LOGOUT,
+  FORGOT,
+  RESET,
+  FORGOT_FAIL,
+  RESET_FAIL
 } from '../types'
 
 
@@ -23,56 +27,59 @@ const AuthState = (props) => {
     loading: true,
     error: null,
     user: null,
+    isForgot: false,
+    resetInfo: null,
+
   };
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
 
 
-  
-const loadUser = async () => {
-      if(localStorage.token) {
-        setAuthToken(localStorage.token)
-      }
-       
-       try {
-         const res = await axios.get('/auth/');
-         dispatch({
-           type : LOAD_USER,
-           payload : res.data
-         })
-       } catch (err) {
-          dispatch({
-            type : AUTH_ERROR
-          })
-       }
+
+  const loadUser = async () => {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token)
+    }
+
+    try {
+      const res = await axios.get('/auth/');
+      dispatch({
+        type: LOAD_USER,
+        payload: res.data
+      })
+    } catch (err) {
+      dispatch({
+        type: AUTH_ERROR
+      })
+    }
   }
 
 
   //REGISTER_USER
   const register = async (formData) => {
-       const config = {
-         headers: {
-           'Content-Type':'application/json'
-           
-         }
-       }
-       try {
-        const res = await axios.post('/register/', formData , config);
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
 
-        dispatch({
-          type: REGISTER_SUCCESS,
-          payload : res.data
-        })
-        loadUser()
-      } catch (err) { 
-        const response = err.response 
-        console.log(response)
-        console.log(response.config.data)
-        dispatch({
-          type: REGISTER_FAIL,
-          payload: response.data.msg
-        })
-       }
+      }
+    }
+    try {
+      const res = await axios.post('/register/', formData, config);
+
+      dispatch({
+        type: REGISTER_SUCCESS,
+        payload: res.data
+      })
+      loadUser()
+    } catch (err) {
+      const response = err.response
+      console.log(response)
+      console.log(response.config.data)
+      dispatch({
+        type: REGISTER_FAIL,
+        payload: response.data.msg
+      })
+    }
   }
 
 
@@ -80,17 +87,17 @@ const loadUser = async () => {
   //post request
   const login = async (formData) => {
     const config = {
-      headers : {
+      headers: {
         'Content-Type': 'application/json'
       }
     }
 
     try {
-      const res = await axios.post('/auth/' , formData , config);
+      const res = await axios.post('/auth/', formData, config);
 
       dispatch({
-        type : LOGIN_SUCCESS,
-        payload : res.data
+        type: LOGIN_SUCCESS,
+        payload: res.data
       })
 
       loadUser();
@@ -98,23 +105,69 @@ const loadUser = async () => {
       const response = err.response
       console.log(response)
       dispatch({
-        type : LOGIN_FAIL,
-        payload : response.data.msg
+        type: LOGIN_FAIL,
+        payload: response.data.msg
       })
     }
   }
 
   //LOGOUT
   const logout = () => {
-     dispatch({
-       type : LOGOUT
-     })
+    dispatch({
+      type: LOGOUT
+    })
   }
 
   const clearError = () => {
-        dispatch({
-          type :CLEAR_ERROR
-        })
+    dispatch({
+      type: CLEAR_ERROR
+    })
+  }
+
+  //FORGOT PASSWORD ROUTE
+  const forgot = async (formData) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+    try {
+      await axios.post('/forgot/', formData, config);
+      dispatch({
+        type: FORGOT
+      })
+
+    } catch (err) {
+      const response = err.response
+      console.log(response)
+      dispatch({
+        type: FORGOT_FAIL,
+        payload: response.data.msg
+      })
+    }
+  }
+
+
+  // PASSWORD TOKEN
+  const resetPassword = async (formData, token) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+
+    try {
+      await axios.post(`/reset/${token}`, formData, config);
+      dispatch({
+        type: RESET
+      })
+    } catch (err) {
+      const response = err.response
+      dispatch({
+        type: RESET_FAIL,
+        payload: response.data.msg
+      })
+    }
   }
 
   return (
@@ -125,11 +178,17 @@ const loadUser = async () => {
         isAuthenticated: state.isAuthenticated,
         error: state.error,
         loading: state.loading,
+        isForgot: state.isForgot,
+        resetInfo: state.resetInfo,
+        notify: state.notify,
+        forgot,
         register,
         clearError,
         loadUser,
         login,
-        logout
+        logout,
+        resetPassword
+
       }}
     >
       {props.children}
