@@ -6,7 +6,9 @@ import {
     GET_ALL_POST_FAIL,
     CLEAR_LOADING,
     DELETE_POST_FAIL,
-    DELETE_POST
+    DELETE_POST,
+    GET_SINGLE_POST,
+    GET_SINGLE_POST_FAIL
 } from '../types'
 
 export default (state, action) => {
@@ -41,6 +43,7 @@ export default (state, action) => {
             }
 
         case GET_ALL_POST_FAIL:
+        case GET_SINGLE_POST_FAIL:
             return {
                 ...state,
                 error: action.payload
@@ -60,6 +63,11 @@ export default (state, action) => {
             return {
                 ...state,
                 error: action.payload
+            }
+        case GET_SINGLE_POST:
+            return {
+                ...state,
+                singlePost: action.payload
             }
         default:
             return {

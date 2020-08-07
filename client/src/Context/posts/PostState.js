@@ -10,7 +10,9 @@ import {
     CLEAR_STATUS,
     CLEAR_LOADING,
     DELETE_POST,
-    DELETE_POST_FAIL
+    DELETE_POST_FAIL,
+    GET_SINGLE_POST,
+    GET_SINGLE_POST_FAIL
 } from '../types'
 
 const PostState = (props) => {
@@ -20,6 +22,7 @@ const PostState = (props) => {
         loading: false,
         deleteStatus: null,
         allposts: [],
+        singlePost: null
     };
 
     const [state, dispatch] = useReducer(PostReducer, initialState);
@@ -86,6 +89,22 @@ const PostState = (props) => {
             })
         }
     }
+
+    //get Single Post
+    const getSinglePost = async (id) => {
+        try {
+            const res = await axios.get(`/blog/${id}`);
+            dispatch({
+                type: GET_SINGLE_POST,
+                payload: res.data
+            })
+        } catch (err) {
+            dispatch({
+                type: GET_SINGLE_POST_FAIL,
+                payload: err.response.data.msg
+            })
+        }
+    }
     return (
         <PostContext.Provider value={{
             allposts: state.allposts,
@@ -93,11 +112,13 @@ const PostState = (props) => {
             imageStatus: state.imageStatus,
             loading: state.loading,
             deleteStatus: state.deleteStatus,
+            singlePost: state.singlePost,
             createPost,
             clearStatus,
             getData,
             clearLoading,
-            deletePost
+            deletePost,
+            getSinglePost
         }} >
             {props.children}
         </PostContext.Provider>

@@ -2,11 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import './App.css'
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'popper.js'
 import 'bootstrap/dist/js/bootstrap'
 import 'react-toastify/dist/ReactToastify.css'
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 
 ReactDOM.render(
   <React.StrictMode>

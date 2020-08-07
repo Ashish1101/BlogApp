@@ -4,6 +4,8 @@ import PostContext from '../../Context/posts/postContext'
 //import AlertContext from '../../Context/alert/alertContext'
 import { useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
+
+
 const Post = () => {
 
     const authContext = useContext(AuthContext)
@@ -44,6 +46,8 @@ const Post = () => {
         e.preventDefault();
         setEvent({ ...event, [e.target.name]: e.target.value })
     }
+
+
 
     const getImage = (e) => {
         e.preventDefault();
@@ -86,18 +90,20 @@ const Post = () => {
                         onChange={onChange}
                     />
                 </div>
+                <br />
                 <div className="form-group">
                     <label >Write Content</label>
+
                     <textarea className="form-control"
                         id="exampleFormControlTextarea1"
                         rows="3"
-                        onChange={onChange}
                         name="info"
+                        onChange={onChange}
                         value={event.info} />
                 </div>
-                <div className="form-group">
+                <div className="custom-file">
                     <input type="file"
-                        className="form-control-file"
+                        className="cutstom-file-input"
                         onChange={getImage}
                         name="image"
                     />

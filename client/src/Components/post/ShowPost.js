@@ -29,6 +29,7 @@ const ShowPost = () => {
     }
 
 
+
     return (
         <div className="container mt-4">
             <form className="row">
@@ -39,7 +40,14 @@ const ShowPost = () => {
                     <input type="button" value="Search" className="btn btn-block btn-dark" />
                 </div>
             </form>
-            {loading ? <Spinner animation="border" variant="dark" /> : (allposts.map(post => <PostItem post={post} key={post._id} />))}
+            {loading ? <Spinner animation="border" variant="dark" /> : (allposts.map(post => <PostItem
+                key={post._id}
+                image={post.image}
+                title={post.title}
+                info={post.info}
+                date={post.date}
+                id={post._id}
+            />))}
 
         </div>
     )

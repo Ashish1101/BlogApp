@@ -107,7 +107,7 @@ router.put('/:id', auth, async (req, res) => {
 //GET Single POST BY USER
 router.get('/:id', auth, async (req, res) => {
     try {
-        const post = await Blog.findById(req.params.id).populate('user ,-password');
+        const post = await Blog.findById(req.params.id).populate('user', '-password -date -blogs')
 
         if (!post) {
             return res.json({ msg: 'No Post found' });

@@ -17,33 +17,40 @@ const Navbar = () => {
 
 
 
+
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a className="navbar-brand" href="#!">Navbar</a>
-      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div className="collapse navbar-collapse nav justify-content-end" id="navbarSupportedContent">
-        <ul className="navbar-nav">
-          {isAuthenticated !== true ? (
-            <ul className="navbar-nav">
-              <li className="nav-item active">
-                <Link to="/login">Login</Link>
-              </li>
-              <li className="nav-item active">
-                <Link to="/register">Sign up</Link>
-              </li>
-            </ul>
-          ) : <ul className="nav-item active">
-              <li className="btn btn-primary" onClick={onLogout}>Logout</li>
-              <li className="btn btn-primary"><Link to="/posts">Add Post</Link></li>
-              <li className="btn btn-primary"><Link to="/show">Show Post</Link></li>
+      <div className="container">
+        <Link className="navbar-brand" to="/">HindiMedium</Link>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 
-            </ul>}
-        </ul>
-      </div>
-    </nav>
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+          <ul className="nav">
+            {isAuthenticated !== true ? (
+              <ul className="navbar-nav">
+                <li className="nav-item active">
+                  <Link className="nav-link" to="/login">Login</Link>
+                </li>
+                <li className="nav-item active">
+                  <Link className="nav-link" to="/register">Sign up</Link>
+                </li>
+              </ul>
+            ) : <ul className="nav align-center">
+
+                <li className="nav-link text-light"><Link to="/posts" style={{ textDecoration: "none" }}>Add Post</Link></li>
+                <li className="nav-link text-light"><Link to="/show" style={{ textDecoration: "none" }}>Show Post</Link></li>
+                <button className=" btn btn-sm btn-outline-danger" onClick={onLogout}>Logout</button>
+              </ul>}
+          </ul>
+        </div>
+      </div >
+    </nav >
   )
 }
+
+
 
 export default Navbar
