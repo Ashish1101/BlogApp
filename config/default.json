@@ -1,6 +1,4 @@
 {
-    "jwtSecret":"Thisismyfuckingwebsite",
-    "mongoURI":"mongodb+srv://test:test@lpudevapp-uj2xp.mongodb.net/<ReactAuth>?retryWrites=true&w=majority",
-    "EMAIL_LOGIN":"ashishskkumar321@gmail.com",
-    "EMAIL_PASSWORD":"Decoder11@"
+	"jwtSecret": "Thisismyfuckingwebsite",
+	"mongoURI": "mongodb+srv://test:test@lpudevapp-uj2xp.mongodb.net/<ReactAuth>?retryWrites=true&w=majority"
 }
