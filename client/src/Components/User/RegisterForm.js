@@ -64,13 +64,13 @@ const RegisterForm = (props) => {
 
 
     return (
-        <div className="container w-50 shadow-sm" style={{ marginTop: "30px" }}>
-            <h2 className="text-center">Register <span className="text-danger">Edunix</span></h2>
+        <div className="container w-50 shadow-sm global__margin">
+            <h2 className="text-center">Register <span style={{color:"#0156ab"}}>HindiMedium</span></h2>
             <form className="container" onSubmit={onSubmit} style={{ height: "400px" }}>
                 <div className="form-group" style={marginCon}>
                     <label>Name</label>
                     <input type="text"
-                        className="form-control"
+                        className="form-control border-top-0 border-left-0 border-right-0"
                         aria-describedby="emailHelp"
                         name="name"
                         onChange={onchange}
@@ -79,7 +79,7 @@ const RegisterForm = (props) => {
                 <div className="form-group" style={marginCon}>
                     <label>Email</label>
                     <input type="email"
-                        className="form-control"
+                        className="form-control border-top-0 border-left-0 border-right-0"
 
                         aria-describedby="emailHelp"
                         name="email"
@@ -89,7 +89,7 @@ const RegisterForm = (props) => {
                 <div className="form-group" style={marginCon}>
                     <label>Password</label>
                     <input type="password"
-                        className="form-control"
+                        className="form-control border-top-0 border-left-0 border-right-0"
 
                         name="password"
                         onChange={onchange}
@@ -99,13 +99,13 @@ const RegisterForm = (props) => {
                 <div className="form-group" style={marginCon}>
                     <label>Confirm Password</label>
                     <input type="password"
-                        className="form-control"
+                        className="form-control border-top-0 border-left-0 border-right-0"
 
                         name="password1"
                         onChange={onchange}
                         value={password1} />
                 </div>
-                <button type="submit" style={marginCon} className="btn btn-block btn-outline-success my-4">Submit</button>
+                <button type="submit" style={marginCon} className="btn btn-block btn-outline-success my-4">Register</button>
             </form>
         </div>
     )

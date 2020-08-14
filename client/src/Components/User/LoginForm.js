@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react'
 import AuthContext from '../../Context/auth/authContext'
 import { toast } from 'react-toastify';
 
-import { Link } from 'react-router-dom'
 
 
 const LoginForm = (props) => {
@@ -10,7 +9,7 @@ const LoginForm = (props) => {
 
     const { login, error, clearError, isAuthenticated } = authContext
 
-    const [count, setCount] = useState(0);
+
 
     useEffect(() => {
 
@@ -22,14 +21,14 @@ const LoginForm = (props) => {
 
         }
         if (error === 'Invalid Data') {
-            setCount(count + 1)
-            // setAlert(error, 'danger')
+            // setCount(count + 1)
+            // // setAlert(error, 'danger')
             ErrorNotify(error)
             clearError();
             // clearError()
-            if (count >= 1) {
-                toast.error('Forgot Password! Click Reset to Create New')
-            }
+            // if (count >= 1) {
+            //     toast.error('Forgot Password! Click Reset to Create New')
+            // }
 
         }
 
@@ -56,7 +55,7 @@ const LoginForm = (props) => {
 
         if (email === ' ' || password === '') {
             // setAlert('All field required', 'success')
-            toast.error("All fields required")
+            toast.warn("All fields required")
 
         }
         const formData = {
@@ -75,8 +74,9 @@ const LoginForm = (props) => {
     const ErrorNotify = (error) => toast.error(error)
 
     return (
-        <div className=" container w-50 shadow-sm h-75" style={{ marginTop: "80px" }}>
-            <h2 className="text-center">Login <span className="text-danger">Edunix</span></h2>
+        <>
+        <div className=" container w-50 shadow-sm global__margin">
+            <h2 className="text-center">Login <span style={{color:"#0156ab"}}>HindiMedium</span></h2>
             <form onSubmit={onSubmit} style={{ height: "300px" }}>
                 <div className="form-group" style={marginCon}>
                     <label >Email</label>
@@ -98,16 +98,17 @@ const LoginForm = (props) => {
 
                         aria-describedby="emailHelp" />
                 </div>
-                <button type="submit" style={{ marginTop: "30px" }} className=" btn btn-block btn-outline-success">Submit</button>
-                {count >= 2 && (<Link to="/forgot" className="btn btn-block btn-success">Reset Password</Link>)}
+                <button type="submit" style={{ marginTop: "30px" }} className=" btn btn-block btn-outline-success">Login</button>
             </form>
-
         </div>
+   
+        </>
     )
 }
 
 const marginCon = {
     marginTop: "20px"
 }
+
 
 export default LoginForm

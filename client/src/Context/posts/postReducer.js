@@ -8,7 +8,10 @@ import {
     DELETE_POST_FAIL,
     DELETE_POST,
     GET_SINGLE_POST,
-    GET_SINGLE_POST_FAIL
+    GET_SINGLE_POST_FAIL,
+    FILTER_POST_SUCCESS,
+    ALL_POSTS_fAIL,
+    ALL_POSTS
 } from '../types'
 
 export default (state, action) => {
@@ -44,6 +47,7 @@ export default (state, action) => {
 
         case GET_ALL_POST_FAIL:
         case GET_SINGLE_POST_FAIL:
+            case ALL_POSTS_fAIL:
             return {
                 ...state,
                 error: action.payload
@@ -68,6 +72,22 @@ export default (state, action) => {
             return {
                 ...state,
                 singlePost: action.payload
+            }
+        case FILTER_POST_SUCCESS:
+            return {
+                  ...state,
+                  filterPost: state.allposts.filter((post) => {
+                      const regex = new RegExp(`${action.payload}` , 'gi');
+                      return (
+                          post.title.match(regex)
+                      )
+                  })
+            }
+        case ALL_POSTS:
+            return {
+                ...state,
+                allposts: action.payload,
+                loading: true
             }
         default:
             return {

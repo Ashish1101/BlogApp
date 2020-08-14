@@ -4,6 +4,8 @@ import PostContext from '../../Context/posts/postContext'
 //import AlertContext from '../../Context/alert/alertContext'
 import { useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import CKEditor from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 
 const Post = () => {
@@ -42,9 +44,10 @@ const Post = () => {
 
     })
 
-    const onChange = (e) => {
+    const TitleData = (e) => {
         e.preventDefault();
-        setEvent({ ...event, [e.target.name]: e.target.value })
+        console.log(e.target.value)
+        setEvent({ ...event, title: e.target.value })
     }
 
 
@@ -65,7 +68,7 @@ const Post = () => {
         const data = new FormData();
         data.append('image', image);
         data.append('info', info)
-        data.append('title', title)
+        data.append('title', title);
         createPost(data);
         // axios.post('/blog/create', data).then(res => {
         //     console.log(res.statusText)
@@ -77,38 +80,52 @@ const Post = () => {
         return <h1>Not Authenticated...</h1>
     }
 
+
+
+    const EditorData = (e, editor) => {
+        const titleData = editor.getData();
+        setEvent({ ...event, info: titleData })
+    }
+
     return (
-        <div className="container w-50 mt-4 ">
-            <h2 className="text-center text-md">Add <span className="text-primary">Post</span></h2>
-            <form onSubmit={submitForm} encType="multipart/form-data">
+        <div className="container w-50  shadow global__margin" >
+            <h2 className="text-center text-md">Add <span style={{color:"#0156ab"}}>Post</span></h2>
+            <form onSubmit={submitForm} style={{ height: "350px" }} encType="multipart/form-data">
                 <div className="form-group">
                     <label >Title</label>
                     <input type="text"
                         className="form-control"
                         name="title"
                         value={event.title || ''}
-                        onChange={onChange}
+                        onChange={TitleData}
                     />
                 </div>
                 <br />
                 <div className="form-group">
-                    <label >Write Content</label>
+                    <label>Write Content</label>
 
-                    <textarea className="form-control"
+                    {/* <textarea className="form-control"
                         id="exampleFormControlTextarea1"
                         rows="3"
                         name="info"
                         onChange={onChange}
-                        value={event.info} />
+
+                        value={event.info} /> */}
+                    <CKEditor
+                        editor={ClassicEditor}
+                        onChange={EditorData}
+
+                    />
                 </div>
-                <div className="custom-file">
+                <div className="custom-file mt-4">
                     <input type="file"
-                        className="cutstom-file-input"
+                        className="custom-file-input"
                         onChange={getImage}
                         name="image"
                     />
 
                 </div>
+
                 <button type="submit" className="btn btn-primary btn-block mt-4">Submit</button>
             </form>
 

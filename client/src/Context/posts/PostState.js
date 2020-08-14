@@ -12,7 +12,11 @@ import {
     DELETE_POST,
     DELETE_POST_FAIL,
     GET_SINGLE_POST,
-    GET_SINGLE_POST_FAIL
+    GET_SINGLE_POST_FAIL,
+   
+    ALL_POSTS,
+    ALL_POSTS_fAIL,
+    FILTER_POST_SUCCESS
 } from '../types'
 
 const PostState = (props) => {
@@ -22,7 +26,8 @@ const PostState = (props) => {
         loading: false,
         deleteStatus: null,
         allposts: [],
-        singlePost: null
+        singlePost: null,
+        filterPost: null
     };
 
     const [state, dispatch] = useReducer(PostReducer, initialState);
@@ -105,6 +110,28 @@ const PostState = (props) => {
             })
         }
     }
+
+    const filter = (text) => {
+        dispatch({
+            type : FILTER_POST_SUCCESS,
+            payload: text
+        })
+    }
+
+    const GetAllPosts =  async () => {
+        try {
+            const res = axios.get('/auth/allblogs');
+            dispatch({
+                type: ALL_POSTS,
+                payload: (await res).data
+            })
+        } catch (err) {
+            dispatch({
+                type: ALL_POSTS_fAIL,
+                payload: err.response.data.msg
+            })
+        }
+    }
     return (
         <PostContext.Provider value={{
             allposts: state.allposts,
@@ -113,12 +140,15 @@ const PostState = (props) => {
             loading: state.loading,
             deleteStatus: state.deleteStatus,
             singlePost: state.singlePost,
+            filterPost:state.filterPost,
             createPost,
             clearStatus,
             getData,
             clearLoading,
             deletePost,
-            getSinglePost
+            getSinglePost,
+            filter,
+            GetAllPosts
         }} >
             {props.children}
         </PostContext.Provider>

@@ -1,8 +1,10 @@
 import React, { useContext, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+
 import PostContext from '../../Context/posts/postContext';
 import { Spinner } from 'react-bootstrap'
 import Moment from 'react-moment'
+
+import ReactHtmlParser from 'react-html-parser'
 const SinglePost = (props) => {
 
     const postContext = useContext(PostContext);
@@ -16,12 +18,30 @@ const SinglePost = (props) => {
 
     console.log(singlePost)
 
+    const textToAudio = () => {
+        let msg = singlePost.info;
+        let speech = new SpeechSynthesisUtterance();
+        speech.lang = "en-US";
+        
+        speech.text = msg;
+        speech.volume = 1;
+        speech.rate = 0.5;
+        speech.pitch = 0.5;
+        window.speechSynthesis.speak(speech)
+    }
+
+    const AudioCancel = () => {
+        window.speechSynthesis.cancel();
+    }
+
     if (singlePost !== null) {
         // console.log(singlePost.title)
         const { info, title, image, user, _id, date } = singlePost
         return (
-            <div className="container w-75 mt-4 shadow">
+            <div className="container w-75 shadow" style={{marginTop:"4.0rem"}}>
+                
                 <div className="row">
+                   
                     <div>
                         < h2 className="display-3">{title}</h2>
                         <p className="lead">by {}<span className="text-muted">{user.name}</span> </p>
@@ -31,10 +51,14 @@ const SinglePost = (props) => {
                         </span>
                         </p>
                     </div>
+                     <div>
+                    <button className="btn btn-sm btn-default" onClick={textToAudio}>Listen</button>
+                    <button className="btn btn-sm btn-default" onClick={AudioCancel}>Cancel</button>
+                    </div>
                     <div className="d-block h-25" >
                         <img className="img-fluid max-width:100%" src={require(`../../../public/upload/${image}`)} alt={_id} />
                     </div>
-                    <p className="lead text-justify mt-4">{info}</p>
+                    <p className="lead text-justify mt-4">{ReactHtmlParser(info)}</p>
                 </div>
             </div>
         )

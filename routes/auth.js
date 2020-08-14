@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken')
 const auth = require('../middleware/auth')
 const config = require('config')
 const secret = config.get('jwtSecret')
+const Blog  = require('../models/blog')
 
 router.get('/' , auth ,  async (req , res) => {
     try {
@@ -62,6 +63,22 @@ router.post('/' , [
        console.log(err.message);
        return res.status(500).send('server error')
    }
+})
+
+
+router.get('/allblogs', async (req, res) => {
+    try {
+
+        const posts = await Blog.find().sort({date: -1})
+        if(!posts) {
+            return res.status(201).json({msg:"No posts"})
+        }
+        res.json(posts)
+        console.log(posts)
+    } catch (err) {
+        console.log(err)
+        res.status(500).send('server error')
+    }
 })
 
 module.exports = router

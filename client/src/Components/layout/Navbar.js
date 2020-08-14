@@ -20,7 +20,7 @@ const Navbar = () => {
 
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark container-fluid" >
       <div className="container">
         <Link className="navbar-brand" to="/">HindiMedium</Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,7 @@ const Navbar = () => {
                 </li>
               </ul>
             ) : <ul className="nav align-center">
-
+                {/* <li className="lead text-light pt-1">Welcome<span class="navbar-text">{user.name}</span></li> */}
                 <li className="nav-link text-light"><Link to="/posts" style={{ textDecoration: "none" }}>Add Post</Link></li>
                 <li className="nav-link text-light"><Link to="/show" style={{ textDecoration: "none" }}>Show Post</Link></li>
                 <button className=" btn btn-sm btn-outline-danger" onClick={onLogout}>Logout</button>
