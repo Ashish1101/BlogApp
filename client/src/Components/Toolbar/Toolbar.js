@@ -36,8 +36,9 @@ const Toolbar = (props) => {
                         </ul>
                     ) : <ul className="nav align-center">
                             {/* <li className="lead text-light pt-1">Welcome<span class="navbar-text">{user.name}</span></li> */}
+                            <li className="nav-link text-light"><Link to="/allposts" style={{ textDecoration: "none" }}>Posts</Link></li>
                             <li className="nav-link text-light"><Link to="/posts" style={{ textDecoration: "none" }}>Add Post</Link></li>
-                            <li className="nav-link text-light"><Link to="/show" style={{ textDecoration: "none" }}>Show Post</Link></li>
+                            <li className="nav-link text-light"><Link to="/show" style={{ textDecoration: "none" }}>My posts</Link></li>
                             <button className=" btn btn-sm btn-outline-danger" onClick={onLogout}>Logout</button>
                         </ul>}
                 </div>

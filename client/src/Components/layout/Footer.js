@@ -8,7 +8,7 @@ import './dashboard.css'
 const Footer = () => {
      let dt = new Date()
     return (
-         <footer>
+         <footer style={{left:0, bottom:0, position:"fixed"}}>
              <div>All right reserved &copy; {dt.getFullYear()}</div>
                 <div className="follow">
                    <div>Follow</div>

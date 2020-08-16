@@ -2,21 +2,21 @@ import React, { useState, useContext, useEffect } from 'react'
 import AuthContext from '../../Context/auth/authContext'
 //import AlertContext from '../../Context/alert/alertContext'
 import { toast } from 'react-toastify'
-
+import {useHistory} from 'react-router-dom'
 
 const RegisterForm = (props) => {
     const authContext = useContext(AuthContext);
     //const alertContext = useContext(AlertContext);
-
+    let history = useHistory()
     //const { setAlert } = alertContext;
     const { register, error, isAuthenticated } = authContext
 
     useEffect(() => {
         if (isAuthenticated) {
-            props.history.push('/login')
-                (function () {
-                    toast.success('User Registered Successfully')
-                })()
+           history.push('/login')
+                // (function () {
+                //     toast.success('User Registered Successfully')
+                // })()
         }
         if (error === 'Email already in use') {
             toast.error(error)

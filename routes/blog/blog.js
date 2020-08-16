@@ -28,7 +28,7 @@ const upload = multer({
     storage: storage,
     fileFilter: fileFilter,
     limits: {
-        fileSize: 1024 * 1024 * 3
+        fileSize: 1024 * 1024 * 2
     }
 }).single('image')
 //ROUTE POST

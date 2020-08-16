@@ -22,6 +22,7 @@ import { ToastContainer } from 'react-toastify'
 import ToolBar from './Components/Toolbar/Toolbar'
 import './Components/Toolbar/Toolbar.css'
 import SideDrawer from './Components/Toolbar/SideDrawer'
+import DashboardPost  from './Components/post/DashboardPost'
 
 
 import Backdrop from './Components/Backdrop/Backdrop'
@@ -67,6 +68,7 @@ function App() {
               <Route exact path="/" component={Dashboad} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <PrivateRoute exact path="/allposts" component={DashboardPost} />
               {/* <Route exact path="/forgot" component={Forgot} />
               <Route exact path="/reset/:token" component={Reset2} /> */}
               <PrivateRoute exact path="/posts/:id" component={SinglePost} />

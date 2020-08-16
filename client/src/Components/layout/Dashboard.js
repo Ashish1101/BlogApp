@@ -23,19 +23,19 @@ const Dashboard = (props) => {
                 <h1>Feel Free to share</h1>
                 <img src={require('../image/background.png')} alt="1" />
             </section>
-            <section className="card__area">
+            {/* <section className="card__area">
             
                   <Card heading={"Don't want to read"}>
                  We have reading assitance for you
              </Card>
-                <Card heading={"How Our Services"}>
-                 Hello world
+                <Card heading={"Create Free Blogs"}>
+                    
              </Card>
                 <Card heading={"How Our Services"}>
                  Hello world
              </Card>
            
-            </section>
+            </section> */}
             
             {/* <section className="feedback__form">
                 <div><h1>This is Feedback Form</h1></div>

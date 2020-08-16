@@ -123,7 +123,7 @@ const Post = () => {
                         onChange={getImage}
                         name="image"
                     />
-
+                  <span>size less than 2 mb</span>
                 </div>
 
                 <button type="submit" className="btn btn-primary btn-block mt-4">Submit</button>
