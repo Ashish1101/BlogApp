@@ -30,7 +30,7 @@ const Postcard = ({image , title ,date, id }) => {
                     </div>
                 </div>
                 <div className=" ml-auto" style={{ width: "450px" }}>
-                    <img className="img-thumbnail" src={require(`../../../public/upload/${image}`)} alt={id} />
+                    <img className="img-thumbnail" src={`%PUBLIC_URL%/upload/${image}`} alt={id} />
                 </div>
             </div>
             <br />
