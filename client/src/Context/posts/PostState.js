@@ -38,6 +38,9 @@ const PostState = (props) => {
 
         try {
             const res = await axios.post('/blog/create', formData);
+            console.log(res.data)
+            debugger;
+            console.log(res.data)
             dispatch({
                 type: CREATE_POST_SUCCESS,
                 payload: res.data
@@ -47,7 +50,7 @@ const PostState = (props) => {
             console.log(response)
             dispatch({
                 type: CREATE_POST_FAIL,
-                payload: err.response.data.msg
+                payload: response.data.msg
             })
         }
     }

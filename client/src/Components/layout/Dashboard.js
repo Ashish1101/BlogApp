@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import AuthContext from '../../Context/auth/authContext'
 import './dashboard.css'
-import Card from './Card'
+//import Card from './Card'
 import Footer from './Footer'
 
 

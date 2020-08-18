@@ -60,6 +60,7 @@ const Post = () => {
 
 
     const submitForm = (e) => {
+        console.log("e:",e)
         e.preventDefault();
         if (info === '' || title === "") {
             //setAlert('Fill All field', 'danger')
@@ -90,7 +91,7 @@ const Post = () => {
     return (
         <div className="container w-50  shadow global__margin" >
             <h2 className="text-center text-md">Add <span style={{color:"#0156ab"}}>Post</span></h2>
-            <form onSubmit={submitForm} style={{ height: "350px" }} encType="multipart/form-data">
+            <form  style={{ height: "350px" }} encType="multipart/form-data">
                 <div className="form-group">
                     <label >Title</label>
                     <input type="text"
@@ -125,8 +126,8 @@ const Post = () => {
                     />
                   <span>size less than 2 mb</span>
                 </div>
-
-                <button type="submit" className="btn btn-primary btn-block mt-4">Submit</button>
+            
+                <button onClick={submitForm} className="btn btn-primary btn-block mt-4">Submit</button>
             </form>
 
         </div>

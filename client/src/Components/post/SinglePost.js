@@ -13,10 +13,12 @@ const SinglePost = (props) => {
         (function () {
             getSinglePost(props.match.params.id)
         })()
+
+        console.log("private" , process.env.PUBLIC_URL)
         //eslint-disable-next-line
     }, [])
 
-    console.log(singlePost)
+      
 
     const textToAudio = () => {
         let msg = singlePost.info;
@@ -34,14 +36,20 @@ const SinglePost = (props) => {
         window.speechSynthesis.cancel();
     }
 
+    console.log("public" ,process.env.PUBLIC_URL)
+
     if (singlePost !== null) {
         // console.log(singlePost.title)
         const { info, title, image, user, _id, date } = singlePost
+
+
+        console.log("process" , process.env.PUBLIC_URL)
+
+
         return (
             <div className="container w-75 shadow" style={{marginTop:"4.0rem"}}>
                 
                 <div className="row">
-                   
                     <div>
                         < h2 className="display-3">{title}</h2>
                         <p className="lead">by {}<span className="text-muted">{user.name}</span> </p>
@@ -56,7 +64,7 @@ const SinglePost = (props) => {
                     <button className="btn btn-sm btn-default" onClick={AudioCancel}>Cancel</button>
                     </div>
                     <div className="d-block h-25" >
-                        <img className="img-fluid max-width:100%" src={`%PUBLIC_URL%/upload/${image}`} alt={_id} />
+                        <img className="img-fluid max-width:100%" src={`${process.env.PUBLIC_URL}/upload/${image}`} alt={_id} />
                     </div>
                     <p className="lead text-justify mt-4">{ReactHtmlParser(info)}</p>
                 </div>

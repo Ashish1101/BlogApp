@@ -29,12 +29,12 @@ const PostItem = ({ title, image, id, date }) => {
                     </div>
                     <div className="pl-2 pt-4">
                         <p>Created At: <span> <Moment format="DD/MM/YYYY">
-                            <p className="text-lead ">Created At : <span className="badge badge-primary">{date}</span></p>
+                           {date}
                         </Moment></span> </p>
                     </div>
                 </div>
                 <div className=" ml-auto" style={{ width: "450px" }}>
-                    <img className="img-thumbnail" src={`%PUBLIC_URL%/upload/${image}`} alt={id} />
+                    <img className="img-thumbnail" src={`${process.env.PUBLIC_URL}/upload/${image}`} alt={id} />
                 </div>
             </div>
             <br />

@@ -3,4 +3,4 @@ client/node_modules
 config/default.json
 client/build
 client/.env.local
-# client/public/upload
+client/public/upload

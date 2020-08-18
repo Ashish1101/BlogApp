@@ -42,9 +42,8 @@ const DashboardPost = () => {
 
 const componetClass = {
 width: "80%",
-width: "80%",
+
 zIndex: -1,
-boxShadow: "grey 3px 2px 5px",
 transform: "translate(-50 %, -50 %)",
 left: "50%",
 top: "110%",
