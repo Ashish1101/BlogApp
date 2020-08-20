@@ -1,7 +1,7 @@
 {
 	"name": "client",
 	"version": "0.1.0",
-	"homepage": ".",
+	"homepage": "https://arcane-wave-95757.herokuapp.com",
 	"private": true,
 	"dependencies": {
 		"@ckeditor/ckeditor5-build-classic": "^21.0.0",
