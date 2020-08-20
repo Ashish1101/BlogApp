@@ -34,7 +34,7 @@ const PostItem = ({ title, image, id, date }) => {
                     </div>
                 </div>
                 <div className=" ml-auto" style={{ width: "450px" }}>
-                    <img className="img-thumbnail" src={`upload/${image}`} alt={id} />
+                    <img className="img-thumbnail" src={`${window.location.origin}/upload/${image}`} alt={id} />
                 </div>
             </div>
             <br />
