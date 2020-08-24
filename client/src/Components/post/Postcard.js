@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 const Postcard = ({image , title ,date, id }) => {
   
 
-
+    console.log(`'public url', ${process.env.PUBLIC_URL}`)
     
     
    
@@ -28,8 +28,8 @@ const Postcard = ({image , title ,date, id }) => {
                         </Moment></span> </p>
                     </div>
                 </div>
-                <div className=" ml-auto" style={{ width: "450px" }}>
-                    <img className="img-thumbnail" src={`${process.env.PUBLIC_URL}/upload/${image}`} alt={id} />
+                <div className=" ml-auto" style={{ width: "450px" }} >
+                   <img className="img-thumbnail" src={`${window.location.origin}/upload/${image}`} alt={id} />
                 </div>
             </div>
             <br />
