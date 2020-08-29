@@ -5,15 +5,7 @@ import Moment from 'react-moment'
 import {Link} from 'react-router-dom'
 
 const Postcard = ({image , title ,date, id }) => {
-  
-
-    useEffect(() => {
-        console.log(image);
-        console.log(image.path)
-    })
-    
-    
-   
+     
 
     return (
         <div className="container ">
