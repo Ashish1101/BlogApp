@@ -59,7 +59,7 @@ const SinglePost = (props) => {
                     <div className="d-block h-25" >
                         <img className="img-fluid max-width:100%" src={require(`../../images/${image}`)} alt={_id} />
                     </div>
-                    <p className="lead text-justify mt-4">{ReactHtmlParser(info)}</p>
+                    <div className="lead text-justify mt-4">{ReactHtmlParser(info)}</div>
                 </div>
             </div>
         )

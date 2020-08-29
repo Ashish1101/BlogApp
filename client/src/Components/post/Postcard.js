@@ -1,4 +1,4 @@
-import React  , {useEffect} from 'react'
+import React  from 'react'
 import './postcard.css'
 import Moment from 'react-moment'
 //import ReactHtmlParser from 'react-html-parser'
