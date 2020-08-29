@@ -8,7 +8,7 @@ const User = require('../../models/User')
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './client/public/upload')
+        cb(null, './client/src/images')
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + "-" + file.fieldname + path.extname(file.originalname))

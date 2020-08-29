@@ -1,4 +1,4 @@
-import React from 'react'
+import React  , {useEffect} from 'react'
 import './postcard.css'
 import Moment from 'react-moment'
 //import ReactHtmlParser from 'react-html-parser'
@@ -7,7 +7,10 @@ import {Link} from 'react-router-dom'
 const Postcard = ({image , title ,date, id }) => {
   
 
-    console.log(`'public url', ${process.env.PUBLIC_URL}`)
+    useEffect(() => {
+        console.log(image);
+        console.log(image.path)
+    })
     
     
    
@@ -29,7 +32,7 @@ const Postcard = ({image , title ,date, id }) => {
                     </div>
                 </div>
                 <div className=" ml-auto" style={{ width: "450px" }} >
-                   <img className="img-thumbnail" src={`${window.location.origin}/upload/${image}`} alt={id} />
+                   <img className="img-thumbnail" src={require(`../../images/${image}`)} alt={id} />
                 </div>
             </div>
             <br />

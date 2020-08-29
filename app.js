@@ -30,12 +30,15 @@ app.use('/blog', require('./routes/blog/blog'))
 
 //server static data (React)
 
-if(process.env.NODE_ENV === 'production') {
-    //set static folder
+// if(process.env.NODE_ENV === 'production') {
+//     //set static folder
+//    app.use(express.static(path.join(__dirname ,  '/build/')))
 
-   app.use(express.static(path.join(__dirname , 'client' , 'build')))
+//     app.get('*' , (req , res) => res.sendFile(path.resolve(__dirname ,  'build', 'index.html')))
+// }
 
-    app.get('*' , (req , res) => res.sendFile(path.resolve(__dirname , 'client', 'build', 'index.html')))
-}
+ app.use(express.static(path.join(__dirname ,  '/build/')))
+
+ app.get('*' , (req , res) => res.sendFile(path.resolve(__dirname ,  'build', 'index.html')))
 
 app.listen(port, () => console.log('connected on port' + port))
