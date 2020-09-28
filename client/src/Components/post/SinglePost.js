@@ -26,8 +26,8 @@ const SinglePost = (props) => {
         
         speech.text = msg;
         speech.volume = 1;
-        speech.rate = 0.5;
-        speech.pitch = 0.5;
+        speech.rate = 0.8;
+        speech.pitch = 1;
         window.speechSynthesis.speak(speech)
     }
 
