@@ -57,7 +57,7 @@ const SinglePost = (props) => {
                     <button className="btn btn-sm btn-default" onClick={AudioCancel}>Cancel</button>
                     </div>
                     <div className="d-block h-25" >
-                        <img className="img-fluid max-width:100%" src={require(`../../images/${image}`)} alt={_id} />
+                        <img className="img-fluid max-width:100%" src={image} alt={_id} />
                     </div>
                     <div className="lead text-justify mt-4">{ReactHtmlParser(info)}</div>
                 </div>

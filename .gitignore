@@ -1,6 +1,6 @@
 node_modules
 client/node_modules
-config/default.json
+config/*.json
 client/build
 client/.env.local
 client/public/upload

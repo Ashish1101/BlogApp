@@ -1,41 +1,17 @@
 const auth = require('../../middleware/auth')
 const router = require('express').Router();
 const Blog = require('../../models/blog')
-const multer = require('multer');
-const path = require('path')
+// const multer = require('multer');
+// const path = require('path')
 const User = require('../../models/User')
+const upload = require('../../middleware/upload')
 
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, './client/src/images')
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + "-" + file.fieldname + path.extname(file.originalname))
-    }
-})
-
-const fileFilter = (req, file, cb) => {
-    if (file.mimetype === 'image/jpeg'
-        || file.mimetype === 'image/png'
-        || file.mimetype === 'image/jpg') {
-        cb(null, true)
-    }
-    cb(null, false)
-}
-
-const upload = multer({
-    storage: storage,
-    fileFilter: fileFilter,
-    limits: {
-        fileSize: 1024 * 1024 * 2
-    }
-}).single('image')
 //ROUTE POST
 //ADD POST
-router.post('/create', auth, upload, async (req, res) => {
+router.post('/create', auth, upload.single('image') , async (req, res) => {
     const { title, info } = req.body;
-
+    console.log(req.file)
     try {
         let blog = await Blog.findOne({ title });
         if (blog) {
@@ -46,7 +22,7 @@ router.post('/create', auth, upload, async (req, res) => {
             title,
             info,
             user: req.user.id,
-            image: req.file.filename
+            image: req.file.location
         });
 
         User.findOneAndUpdate({ _id: req.user.id },

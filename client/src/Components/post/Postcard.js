@@ -1,18 +1,18 @@
 import React  from 'react'
 import './postcard.css'
 import Moment from 'react-moment'
-//import ReactHtmlParser from 'react-html-parser'
+// import ReactHtmlParser from 'react-html-parser'
 import {Link} from 'react-router-dom'
 
-const Postcard = ({image , title ,date, id }) => {
+const Postcard = ({image , title ,date, id  }) => {
      
 
     return (
-        <div className="container ">
-            <div className="row row-cols-sm-2 row-cols-md-2 mx-auto mt-4 shadow">
+        <div className="container shadow">
+            <div className="row row-cols-sm-2 row-cols-md-2 mx-auto mt-4">
                 <div className="col">
                     <h1 className="text-wrap Capatilize">{title}</h1>
-                    {/* <p className="text-justify text-break text-truncate font-weight-light">{text}</p> */}
+                    {/* <p className="text-justify text-break text-truncate font-weight-light">{ReactHtmlParser(info)}</p> */}
                     <div className="btn-group mt-4" role="group" aria-label="Basic example">
 
                         <Link to={`/posts/${id}`} className="btn btn-inline-block btn-outline-success ml-2" >Read</Link>
@@ -23,8 +23,8 @@ const Postcard = ({image , title ,date, id }) => {
                         </Moment></span> </p>
                     </div>
                 </div>
-                <div className=" ml-auto" style={{ width: "450px" }} >
-                   <img className="img-thumbnail" src={require(`../../images/${image}`)} alt={id} />
+                <div className=" ml-auto" style={{ width: "300px" }} >
+                   <img className="img-thumbnail" src={image} alt={id} />
                 </div>
             </div>
             <br />

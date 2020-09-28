@@ -33,8 +33,8 @@ const PostItem = ({ title, image, id, date }) => {
                         </Moment></span> </p>
                     </div>
                 </div>
-                <div className=" ml-auto" style={{ width: "450px" }}>
-                    <img className="img-thumbnail" src={require(`../../images/${image}`)} alt={id} />
+                <div className=" ml-auto" style={{ width: "300px" }}>
+                    <img className="img-thumbnail" src={image} alt={id} />
                 </div>
             </div>
             <br />
