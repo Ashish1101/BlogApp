@@ -41,6 +41,6 @@ app.use('/blog', require('./routes/blog/blog'))
 
  app.use(express.static(path.join(__dirname ,  '/build/')))
 
- app.get('*' , (req , res) => res.sendFile(path.resolve(__dirname ,  'build', 'index.html')))
+ app.get('*' , (req , res) => res.sendFile(path.resolve(__dirname ,  '/build/index.html')))
 
 app.listen(port, () => console.log('connected on port' + port))
