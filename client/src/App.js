@@ -23,6 +23,7 @@ import ToolBar from './Components/Toolbar/Toolbar'
 import './Components/Toolbar/Toolbar.css'
 import SideDrawer from './Components/Toolbar/SideDrawer'
 import DashboardPost  from './Components/post/DashboardPost'
+import Footer from './Components/layout/Footer'
 
 
 import Backdrop from './Components/Backdrop/Backdrop'
@@ -75,6 +76,7 @@ function App() {
               <PrivateRoute exact path="/posts" component={Post} />
               <PrivateRoute exact path='/show' component={ShowPost} />
             </Switch>
+            <Footer />
           </Router>
         </PostState>
       </AlertState>

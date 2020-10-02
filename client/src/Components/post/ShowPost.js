@@ -33,7 +33,7 @@ const ShowPost = () => {
     
     
     const onChange = (e) => {
-        console.log(e.target.value)
+        //console.log(e.target.value)
         setText(e.target.value)
     }
     
@@ -52,6 +52,7 @@ const ShowPost = () => {
                     <input type="button" value="Search" onClick={submitForm} className="btn btn-block btn-dark" />
                 </div>
             </form>
+            {allposts.length === 0 ? <p className="pl-4  text-primary mt-2">You have no post to show , Create one </p> : ""}
             {loading ? <Spinner animation="border" variant="dark" /> : (
                 filterPost !== null ? filterPost.map(post => <PostItem
                     key={post._id}

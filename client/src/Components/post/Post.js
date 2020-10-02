@@ -46,7 +46,7 @@ const Post = () => {
 
     const TitleData = (e) => {
         e.preventDefault();
-        console.log(e.target.value)
+        //console.log(e.target.value)
         setEvent({ ...event, title: e.target.value })
     }
 
@@ -60,7 +60,7 @@ const Post = () => {
 
 
     const submitForm = (e) => {
-        console.log("e:",e)
+       // console.log("e:",e)
         e.preventDefault();
         if (info === '' || title === "") {
             //setAlert('Fill All field', 'danger')

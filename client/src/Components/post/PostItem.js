@@ -17,7 +17,7 @@ const PostItem = ({ title, image, id, date }) => {
 
    
     return (
-        <div className="container ">
+        <div className="container shadow">
             <div className="row row-cols-sm-2 row-cols-md-2 mx-auto mt-4" style={{ boxShadow:"11px 21px 0 hsla(180,9%,98%,.12), 0 6px 11px 0 rgba(0,0,0,.09)"}}>
                 <div className="col">
                     <h1 className="text-wrap Capatilize">{title}</h1>

@@ -6,10 +6,10 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import './dashboard.css'
 
 const Footer = () => {
-     let dt = new Date()
+     //let dt = new Date()
     return (
          <footer style={{left:0, bottom:0, position:"fixed"}}>
-             <div>Made with ❤️ by Ashish </div> 
+             <div>Made with <span role="img" aria-label="emoji">❤️</span> by Ashish </div> 
              {/* we can add date also */}
                 <div className="follow">
                    <div>Follow</div>
